@@ -188,6 +188,12 @@ a:hover {
   .projects .what { grid-column: 1 / -1; }
 }
 
+.note {
+  margin-top: 0.875rem;
+  font-size: 0.9rem;
+  color: var(--grey);
+}
+
 /* ---- link list ---- */
 .links { list-style: none; }
 .links li { padding: 0.25rem 0; }
