@@ -1,0 +1,189 @@
+/* alexgrais.com
+   The name is the palette: shades of Grais, one vermilion accent. */
+
+:root {
+  --ink:      #2A2724;
+  --ink-soft: #4A4540;
+  --grey:     #6B655E;
+  --grey-mid: #8C857C;
+  --grey-lt:  #ADA69C;
+  --line:     #E4DED5;
+  --paper:    #FAF8F5;
+  --pop:      #E8503A;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink:      #E9E4DC;
+    --ink-soft: #C8C2B8;
+    --grey:     #A39C92;
+    --grey-mid: #7A736A;
+    --grey-lt:  #55504A;
+    --line:     #3A3630;
+    --paper:    #201E1B;
+    --pop:      #F0664F;
+  }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  background: var(--paper);
+  /* faint paper grain */
+  background-image: radial-gradient(var(--line) 0.5px, transparent 0.5px);
+  background-size: 22px 22px;
+}
+
+main {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: clamp(3rem, 9vh, 6.5rem) 1.5rem 4rem;
+}
+
+/* ---- staggered entrance ---- */
+.rise {
+  animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--d) * 90ms);
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rise { animation: none; }
+}
+
+/* ---- header ---- */
+.kicker {
+  font-family: "Spline Sans Mono", monospace;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  color: var(--grey-mid);
+  margin-bottom: 1.25rem;
+}
+.kicker .accent { color: var(--pop); }
+
+h1 {
+  font-family: "Fraunces", serif;
+  font-optical-sizing: auto;
+  font-weight: 550;
+  font-size: clamp(2.6rem, 8vw, 3.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.swatches {
+  display: flex;
+  gap: 0.375rem;
+  margin: 1.5rem 0 1.75rem;
+}
+.swatches span {
+  width: 2rem;
+  height: 0.875rem;
+  border-radius: 2px;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.swatches span:hover { transform: translateY(-4px); }
+.swatches span:nth-child(1) { background: var(--ink); }
+.swatches span:nth-child(2) { background: var(--ink-soft); }
+.swatches span:nth-child(3) { background: var(--grey); }
+.swatches span:nth-child(4) { background: var(--grey-mid); }
+.swatches span:nth-child(5) { background: var(--grey-lt); }
+.swatches span:nth-child(6) { background: var(--line); }
+.swatches span:nth-child(7) { background: var(--line); opacity: 0.5; }
+.swatches span.pop { background: var(--pop); }
+
+.tagline {
+  font-size: 1.125rem;
+  color: var(--grey);
+}
+
+/* ---- sections ---- */
+section { margin-top: 3.25rem; }
+
+h2 {
+  font-family: "Fraunces", serif;
+  font-weight: 550;
+  font-size: 1.375rem;
+  color: var(--ink);
+  margin-bottom: 0.875rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+}
+h2 .mono { font-size: 0.75rem; color: var(--pop); }
+
+section p + p { margin-top: 0.875rem; }
+
+strong { color: var(--ink); font-weight: 500; }
+em { font-family: "Fraunces", serif; font-style: italic; }
+
+.mono {
+  font-family: "Spline Sans Mono", monospace;
+  font-size: 0.875em;
+}
+
+/* ---- links ---- */
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--grey-lt);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s, color 0.2s;
+}
+a:hover {
+  color: var(--pop);
+  text-decoration-color: var(--pop);
+}
+
+/* ---- project list ---- */
+.projects { list-style: none; }
+.projects li {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--line);
+}
+.projects li:last-child { border-bottom: 1px solid var(--line); }
+.projects .name {
+  font-family: "Fraunces", serif;
+  font-weight: 550;
+  color: var(--ink);
+}
+.projects .status {
+  font-size: 0.75rem;
+  color: var(--pop);
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .projects li { grid-template-columns: 1fr auto; }
+  .projects .what { grid-column: 1 / -1; }
+}
+
+/* ---- link list ---- */
+.links { list-style: none; }
+.links li { padding: 0.25rem 0; }
+
+/* ---- footer ---- */
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--grey);
+}
+footer .fine {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--grey-mid);
+}
+
+::selection { background: var(--pop); color: var(--paper); }
