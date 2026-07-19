@@ -59,6 +59,26 @@ main {
 }
 
 /* ---- header ---- */
+.header-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+.portrait {
+  width: 8.5rem;
+  height: 8.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  margin-top: 1.25rem;
+  box-shadow: 0 0 0 3px var(--paper), 0 0 0 5.5px var(--pop);
+}
+@media (max-width: 560px) {
+  .header-grid { flex-direction: column-reverse; gap: 1.25rem; }
+  .portrait { width: 7rem; height: 7rem; margin-top: 0; }
+}
+
 .kicker {
   font-family: "Spline Sans Mono", monospace;
   font-size: 0.8125rem;
