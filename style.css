@@ -1,27 +1,29 @@
 /* alexgrais.com
-   The name is the palette: shades of Grais, one vermilion accent. */
+   White canvas, orange energy. One grey swatch remains: the name demanded it. */
 
 :root {
-  --ink:      #2A2724;
-  --ink-soft: #4A4540;
-  --grey:     #6B655E;
-  --grey-mid: #8C857C;
-  --grey-lt:  #ADA69C;
-  --line:     #E4DED5;
-  --paper:    #FAF8F5;
-  --pop:      #E8503A;
+  --ink:      #1B1B1B;
+  --ink-soft: #3F3F3F;
+  --grey:     #6E6E6E;
+  --grey-mid: #9A9A9A;
+  --line:     #ECECEC;
+  --paper:    #FFFFFF;
+  --pop:      #FF4F00;
+  --pop-deep: #D63E00;
+  --pop-soft: #FFF1E9;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --ink:      #E9E4DC;
-    --ink-soft: #C8C2B8;
-    --grey:     #A39C92;
-    --grey-mid: #7A736A;
-    --grey-lt:  #55504A;
-    --line:     #3A3630;
-    --paper:    #201E1B;
-    --pop:      #F0664F;
+    --ink:      #F2EFEC;
+    --ink-soft: #CFCCC8;
+    --grey:     #A5A29E;
+    --grey-mid: #74716D;
+    --line:     #2E2C2A;
+    --paper:    #171614;
+    --pop:      #FF6B2B;
+    --pop-deep: #FF8C4F;
+    --pop-soft: #2A1E15;
   }
 }
 
@@ -35,9 +37,6 @@ body {
   line-height: 1.65;
   color: var(--ink-soft);
   background: var(--paper);
-  /* faint paper grain */
-  background-image: radial-gradient(var(--line) 0.5px, transparent 0.5px);
-  background-size: 22px 22px;
 }
 
 main {
@@ -90,15 +89,15 @@ h1 {
   border-radius: 2px;
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.swatches span:hover { transform: translateY(-4px); }
-.swatches span:nth-child(1) { background: var(--ink); }
-.swatches span:nth-child(2) { background: var(--ink-soft); }
-.swatches span:nth-child(3) { background: var(--grey); }
-.swatches span:nth-child(4) { background: var(--grey-mid); }
-.swatches span:nth-child(5) { background: var(--grey-lt); }
-.swatches span:nth-child(6) { background: var(--line); }
-.swatches span:nth-child(7) { background: var(--line); opacity: 0.5; }
-.swatches span.pop { background: var(--pop); }
+.swatches span:hover { transform: translateY(-4px) rotate(-2deg); }
+.swatches span:nth-child(1) { background: #8A2B06; }
+.swatches span:nth-child(2) { background: #B23705; }
+.swatches span:nth-child(3) { background: #D94403; }
+.swatches span:nth-child(4) { background: #FF4F00; }
+.swatches span:nth-child(5) { background: #FF6B1A; }
+.swatches span:nth-child(6) { background: #FF8C42; }
+.swatches span:nth-child(7) { background: #FFB26B; }
+.swatches span.pop { background: var(--grey-mid); }
 
 .tagline {
   font-size: 1.125rem;
@@ -134,13 +133,14 @@ em { font-family: "Fraunces", serif; font-style: italic; }
 a {
   color: var(--ink);
   text-decoration: underline;
-  text-decoration-color: var(--grey-lt);
+  text-decoration-color: var(--pop);
+  text-decoration-thickness: 1.5px;
   text-underline-offset: 3px;
-  transition: text-decoration-color 0.2s, color 0.2s;
+  transition: color 0.2s, background 0.2s;
 }
 a:hover {
-  color: var(--pop);
-  text-decoration-color: var(--pop);
+  color: var(--pop-deep);
+  background: var(--pop-soft);
 }
 
 /* ---- project list ---- */
@@ -186,4 +186,4 @@ footer .fine {
   color: var(--grey-mid);
 }
 
-::selection { background: var(--pop); color: var(--paper); }
+::selection { background: var(--pop); color: #FFFFFF; }
