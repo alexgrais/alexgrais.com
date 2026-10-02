@@ -34,6 +34,12 @@
 
   --shadow-portrait: 14px 14px 0 var(--accent);
 
+  --av-skin:  #E8B48C;
+  --av-hair:  #04232B;
+  --av-shirt: #0B5C6B;
+  --av-tee:   #E3EDEF;
+  --av-pants: #04232B;
+
   --content-max: 1120px;
   --gutter: clamp(20px, 5vw, 40px);
 
@@ -49,6 +55,11 @@
     --text:    #BDD3D5;
     --muted:   #8DB2B6;
     --second:  #FFC61A;
+
+    --av-hair:  #1D4A55;
+    --av-shirt: #2F7D8C;
+    --av-tee:   #BDD3D5;
+    --av-pants: #8DB2B6;
 
     color-scheme: dark;
   }
@@ -152,6 +163,97 @@ strong { color: var(--ink); font-weight: 700; }
   text-decoration-color: var(--accent);
   text-decoration-thickness: 3px;
   text-underline-offset: 6px;
+}
+
+/* ---- walker: a pixel character who lives in the header ----
+   He paces the line under the nav. On a wide screen he also hops down onto
+   the portrait and back. */
+.ag-sprite { display: block; width: 24px; height: 32px; }
+.ag-sprite__step--a { animation: ag-step-a 0.44s steps(1) infinite; }
+.ag-sprite__step--b { opacity: 0; animation: ag-step-b 0.44s steps(1) infinite; }
+.ag-px-skin  { fill: var(--av-skin); }
+.ag-px-hair  { fill: var(--av-hair); }
+.ag-px-shirt { fill: var(--av-shirt); }
+.ag-px-tee   { fill: var(--av-tee); }
+.ag-px-pants { fill: var(--av-pants); }
+.ag-px-shoe  { fill: var(--accent); }
+@keyframes ag-step-a { 0% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes ag-step-b { 0% { opacity: 0; } 50% { opacity: 1; } }
+
+.ag-nav__inner { position: relative; }
+.ag-nav__stage {
+  position: absolute;
+  left: calc(var(--gutter) + 180px);
+  right: calc(var(--gutter) + 14px);
+  bottom: 0;
+  height: 32px;
+  container-type: inline-size;
+  pointer-events: none;
+}
+.ag-walker {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  animation: ag-pace 30s linear infinite;
+}
+.ag-walker .ag-sprite { animation: ag-pace-turn 30s steps(1) infinite; }
+@keyframes ag-pace {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(calc(100cqw - 24px)); }
+}
+@keyframes ag-pace-turn {
+  0%  { transform: scaleX(1); }
+  50% { transform: scaleX(-1); }
+}
+
+/* the portrait trip: both characters share one 40s clock.
+   He drops from the bar onto the left of the photo, walks its top edge to
+   the right, then climbs back onto the end of the bar. */
+.ag-portrait-stage { position: relative; flex: 0 0 auto; max-width: 100%; }
+.ag-perch {
+  display: none;
+  position: absolute;
+  right: 14px;
+  bottom: 100%;
+  pointer-events: none;
+}
+.ag-perch__move { opacity: 0; animation: ag-perch 40s linear infinite; }
+@media (min-width: 1000px) {
+  .ag-walker { animation: ag-tour 40s linear infinite; }
+  .ag-walker .ag-sprite { animation: ag-tour-turn 40s steps(1) infinite; }
+  .ag-perch { display: block; }
+}
+@keyframes ag-tour {
+  0%    { transform: translate(0, 0); opacity: 1; }
+  32.5% { transform: translate(calc(100cqw - 280px), 0); animation-timing-function: ease-out; }
+  33.5% { transform: translate(calc(100cqw - 280px), -14px); animation-timing-function: ease-in; }
+  34.6% { transform: translate(calc(100cqw - 280px), 46px); opacity: 1; }
+  34.7% { transform: translate(calc(100cqw - 280px), 46px); opacity: 0; }
+  49.5% { transform: translate(calc(100cqw - 24px), 46px); opacity: 0; }
+  49.6% { transform: translate(calc(100cqw - 24px), 46px); opacity: 1; animation-timing-function: ease-out; }
+  51%   { transform: translate(calc(100cqw - 24px), -14px); animation-timing-function: ease-in; }
+  52%   { transform: translate(calc(100cqw - 24px), 0); opacity: 1; }
+  100%  { transform: translate(0, 0); opacity: 1; }
+}
+@keyframes ag-tour-turn {
+  0%  { transform: scaleX(1); }
+  51% { transform: scaleX(-1); }
+}
+@keyframes ag-perch {
+  0%, 34.6% { transform: translate(-256px, -46px); opacity: 0; }
+  34.7% { transform: translate(-256px, -46px); opacity: 1; animation-timing-function: ease-in; }
+  35.7% { transform: translate(-256px, 0); opacity: 1; }
+  48.4% { transform: translate(0, 0); opacity: 1; animation-timing-function: ease-out; }
+  49.5% { transform: translate(0, -46px); opacity: 1; }
+  49.6%, 100% { transform: translate(0, -46px); opacity: 0; }
+}
+
+@media (max-width: 640px) {
+  .ag-nav__stage { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ag-walker, .ag-walker * { animation: none; }
+  .ag-perch { display: none; }
 }
 
 /* ---- mark, link, chip ---- */
