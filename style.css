@@ -43,11 +43,15 @@
   --content-max: 1120px;
   --gutter: clamp(20px, 5vw, 40px);
 
+  --theme-moon: block;
+  --theme-sun:  none;
+
   color-scheme: light;
 }
 
+/* dark follows the system, unless the visitor picked a theme with the switch */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg:      #04232B;
     --surface: #0A3440;
     --line:    #1D4A55;
@@ -62,7 +66,29 @@
     --av-pants: #8DB2B6;
 
     color-scheme: dark;
+
+    --theme-moon: none;
+    --theme-sun:  block;
   }
+}
+:root[data-theme="dark"] {
+  --bg:      #04232B;
+  --surface: #0A3440;
+  --line:    #1D4A55;
+  --ink:     #E6F1F1;
+  --text:    #BDD3D5;
+  --muted:   #8DB2B6;
+  --second:  #FFC61A;
+
+  --av-hair:  #1D4A55;
+  --av-shirt: #2F7D8C;
+  --av-tee:   #BDD3D5;
+  --av-pants: #8DB2B6;
+
+  color-scheme: dark;
+
+  --theme-moon: none;
+  --theme-sun:  block;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -84,7 +110,8 @@ body {
   box-sizing: content-box;
 }
 
-a:focus-visible {
+a:focus-visible,
+button:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 3px;
   border-radius: var(--radius-xs);
@@ -146,6 +173,7 @@ strong { color: var(--ink); font-weight: 700; }
   padding-bottom: var(--space-4);
 }
 .ag-nav__links {
+  margin-left: auto;
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-1) var(--space-8);
@@ -163,6 +191,29 @@ strong { color: var(--ink); font-weight: 700; }
   text-decoration-color: var(--accent);
   text-decoration-thickness: 3px;
   text-underline-offset: 6px;
+}
+
+/* ---- theme switch ---- */
+.ag-theme {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  cursor: pointer;
+}
+.ag-theme[hidden] { display: none; }
+.ag-theme:hover { background: var(--line); }
+.ag-theme svg { width: 20px; height: 20px; }
+.ag-theme__moon { display: var(--theme-moon); fill: var(--ink); }
+.ag-theme__sun  { display: var(--theme-sun); fill: var(--accent); }
+@media (max-width: 640px) {
+  .ag-theme { order: 1; margin-left: auto; }
+  .ag-nav__links { order: 2; flex-basis: 100%; margin-left: 0; }
 }
 
 /* ---- walker: a pixel character who lives in the header ----

@@ -7,6 +7,12 @@
   <meta name="description" content="Alexandre Grais. Co-founder of Kapptivate. I build whatever curiosity demands, for humans and AI agents alike.">
   <meta name="theme-color" content="#F1F6F7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#04232B" media="(prefers-color-scheme: dark)">
+  <script>
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='11' fill='%23FFC61A'/%3E%3Ctext x='32' y='43' font-family='system-ui,-apple-system,Helvetica,Arial,sans-serif' font-weight='800' font-size='32' letter-spacing='-1.5' fill='%2304232B' text-anchor='middle'%3Eag%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +30,7 @@
         <a href="#writing">Writing</a>
         <a href="#contact">Contact</a>
       </nav>
+      <button class="ag-theme" type="button" aria-label="Switch theme" hidden><svg class="ag-theme__moon" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="0" width="4" height="1"/><rect x="2" y="1" width="4" height="1"/><rect x="1" y="2" width="4" height="1"/><rect x="1" y="3" width="3" height="1"/><rect x="1" y="4" width="3" height="1"/><rect x="1" y="5" width="3" height="1"/><rect x="1" y="6" width="4" height="1"/><rect x="1" y="7" width="5" height="1"/><rect x="8" y="7" width="1" height="1"/><rect x="2" y="8" width="7" height="1"/><rect x="3" y="9" width="5" height="1"/></svg><svg class="ag-theme__sun" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="4" y="0" width="2" height="1"/><rect x="1" y="1" width="1" height="1"/><rect x="8" y="1" width="1" height="1"/><rect x="3" y="2" width="4" height="1"/><rect x="2" y="3" width="6" height="1"/><rect x="0" y="4" width="1" height="1"/><rect x="2" y="4" width="6" height="1"/><rect x="9" y="4" width="1" height="1"/><rect x="0" y="5" width="1" height="1"/><rect x="2" y="5" width="6" height="1"/><rect x="9" y="5" width="1" height="1"/><rect x="2" y="6" width="6" height="1"/><rect x="3" y="7" width="4" height="1"/><rect x="1" y="8" width="1" height="1"/><rect x="8" y="8" width="1" height="1"/><rect x="4" y="9" width="2" height="1"/></svg></button>
     </div>
   </div>
 
@@ -130,5 +137,27 @@
       <span>Two static files, zero frameworks, no em dashes. &copy; 2026 Alexandre Grais</span>
     </footer>
   </main>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var button = document.querySelector(".ag-theme");
+      var system = matchMedia("(prefers-color-scheme: dark)");
+      var colors = { light: "#F1F6F7", dark: "#04232B" };
+      function current() { return root.dataset.theme || (system.matches ? "dark" : "light"); }
+      function label() {
+        button.setAttribute("aria-label", "Switch to " + (current() === "dark" ? "light" : "dark") + " theme");
+      }
+      button.addEventListener("click", function () {
+        var next = current() === "dark" ? "light" : "dark";
+        root.dataset.theme = next;
+        document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.content = colors[next]; });
+        try { localStorage.setItem("theme", next); } catch (e) {}
+        label();
+      });
+      system.addEventListener("change", label);
+      button.hidden = false;
+      label();
+    })();
+  </script>
 </body>
 </html>
