@@ -5,92 +5,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Alexandre Grais</title>
   <meta name="description" content="Alexandre Grais. Co-founder of Kapptivate. I build whatever curiosity demands, for humans and AI agents alike.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FF4F00'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' fill='%23FAF8F5' text-anchor='middle'%3Eag%3C/text%3E%3C/svg%3E">
+  <meta name="theme-color" content="#F1F6F7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#04232B" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='11' fill='%23FFC61A'/%3E%3Ctext x='32' y='43' font-family='system-ui,-apple-system,Helvetica,Arial,sans-serif' font-weight='800' font-size='32' letter-spacing='-1.5' fill='%2304232B' text-anchor='middle'%3Eag%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,550;1,9..144,400&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <main>
-    <header class="rise" style="--d:0">
-      <div class="header-grid">
-        <img class="portrait" src="portrait.jpg" alt="Alexandre Grais" width="640" height="640">
-        <div>
-          <p class="kicker">alexgrais<span class="accent">.com</span></p>
-          <h1>Alexandre Grais</h1>
-          <div class="swatches" aria-hidden="true">
-            <span title="#8A2B06"></span><span title="#B23705"></span><span title="#D94403"></span><span title="#FF4F00"></span><span title="#FF6B1A"></span><span title="#FF8C42"></span><span title="#FFB26B"></span><span class="pop" title="the one shade of Grais"></span>
-          </div>
-          <p class="tagline">Co-founder of <a href="https://www.kapptivate.com">Kapptivate</a>.<br>
-          I build whatever curiosity demands.</p>
+<body class="ag-page">
+  <div class="ag-nav">
+    <div class="ag-container ag-nav__inner">
+      <a class="ag-logo" href="#top"><span class="ag-logo__mark">ag</span>alexgrais.com</a>
+      <nav class="ag-nav__links" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#building">Building</a>
+        <a href="#writing">Writing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="ag-container">
+    <header class="ag-hero rise" id="top" style="--d:0">
+      <div class="ag-hero__text">
+        <h1 class="ag-hero__title">
+          <span class="ag-hero__greeting">Hello, I'm</span>
+          <span class="ag-hero__name">Alexandre <span class="ag-mark">Grais</span></span>
+        </h1>
+        <p class="ag-hero__lead">Co-founder of <a class="ag-link" href="https://www.kapptivate.com">Kapptivate</a>. I build whatever curiosity demands, for humans and AI agents alike.</p>
+        <div class="ag-chips">
+          <span class="ag-chip">Bordeaux</span>
+          <span class="ag-chip">Kapptivate since&nbsp;2014</span>
+          <span class="ag-chip">open&nbsp;source</span>
         </div>
       </div>
+      <img class="ag-portrait" src="portrait.jpg" alt="Alexandre Grais" width="640" height="640">
     </header>
 
-    <section class="rise" style="--d:1">
-      <h2><span class="mono">01</span> About</h2>
-      <p>Curious generalist, lifelong learner, based in Bordeaux. I am at my best in
-      early&#8209;stage ambiguity: shaping products before the rules exist, connecting
-      people and ideas, and going deep on whatever I do not understand yet. Routine
-      bores me; uncharted problems don't.</p>
-      <p>I build all sorts of things, from AI agents and knowledge systems to SDKs,
-      web apps and CLIs. The common thread: everything is designed for
-      <strong>humans and AI agents alike</strong>. Fast, scriptable, JSON&#8209;first,
-      introspectable.</p>
+    <section class="ag-section rise" id="about" style="--d:1">
+      <h2 class="ag-h2">About</h2>
+      <div class="ag-columns">
+        <p>Curious generalist, lifelong learner, based in Bordeaux. I am at my best in
+        early&#8209;stage ambiguity: shaping products before the rules exist, connecting
+        people and ideas, and going deep on whatever I do not understand yet. Routine
+        bores me; uncharted problems don't.</p>
+        <p>I build all sorts of things, from AI agents and knowledge systems to SDKs,
+        web apps and CLIs. The common thread: everything is designed for
+        <strong>humans and AI agents alike</strong>. Fast, scriptable, JSON&#8209;first,
+        introspectable.</p>
+      </div>
     </section>
 
-    <section class="rise" style="--d:2">
-      <h2><span class="mono">02</span> My company</h2>
-      <ul class="projects">
-        <li>
-          <span class="name"><a href="https://www.kapptivate.com">Kapptivate</a></span>
-          <span class="what">the company I co-founded and still build every day</span>
-          <span class="status mono">since&nbsp;2014</span>
-        </li>
-      </ul>
+    <section class="ag-section rise" id="company" style="--d:2">
+      <h2 class="ag-h2">My company</h2>
+      <div class="ag-callout">
+        <div class="ag-callout__body">
+          <a class="ag-callout__title" href="https://www.kapptivate.com">Kapptivate</a>
+          <p>The company I co-founded and still build every day.</p>
+        </div>
+        <span class="ag-chip ag-chip--on-surface">since&nbsp;2014</span>
+      </div>
     </section>
 
-    <section class="rise" style="--d:3">
-      <h2><span class="mono">03</span> Building</h2>
-      <ul class="projects">
-        <li>
-          <span class="name"><a href="https://github.com/alexgrais/lin">lin</a></span>
-          <span class="what">the Linear CLI for humans and AI agents</span>
-          <span class="status mono">open&nbsp;source</span>
-        </li>
-        <li>
-          <span class="name"><a href="https://bordeaux.alexgrais.com">Bordeaux Métropole</a></span>
-          <span class="what">a living 3D map of the 28 communes, built from open geographic data</span>
-          <span class="status mono">live</span>
-        </li>
-        <li>
-          <span class="name">more</span>
-          <span class="what">open source projects on the way, whenever curiosity strikes</span>
-          <span class="status mono">brewing</span>
-        </li>
-      </ul>
-      <p class="note">The lin docs are live at <a href="https://lin.alexgrais.dev" class="mono">lin.alexgrais.dev</a>.</p>
+    <section class="ag-section rise" id="building" style="--d:3">
+      <h2 class="ag-h2">Building</h2>
+      <div class="ag-rows">
+        <div class="ag-row">
+          <a class="ag-row__name" href="https://github.com/alexgrais/lin">lin</a>
+          <span class="ag-row__what">The Linear CLI for humans and AI agents. Docs at <a class="ag-link" href="https://lin.alexgrais.dev">lin.alexgrais.dev</a>.</span>
+          <span class="ag-chip">open&nbsp;source</span>
+        </div>
+        <div class="ag-row">
+          <a class="ag-row__name" href="https://bordeaux.alexgrais.com">Bordeaux Métropole</a>
+          <span class="ag-row__what">A living 3D map of the 28 communes, built from open geographic data.</span>
+          <span class="ag-chip">live</span>
+        </div>
+        <div class="ag-row">
+          <span class="ag-row__name ag-row__name--pending">More</span>
+          <span class="ag-row__what">Open source projects on the way, whenever curiosity strikes.</span>
+          <span class="ag-chip">brewing</span>
+        </div>
+      </div>
     </section>
 
-    <section class="rise" style="--d:4">
-      <h2><span class="mono">04</span> Writing</h2>
-      <p><em>Earl Grais</em> is brewing. A blog served hot, one cup at a time.</p>
+    <section class="ag-section ag-section--split rise" style="--d:4">
+      <div id="writing">
+        <h2 class="ag-h2">Writing</h2>
+        <p class="ag-statement">Earl Grais is brewing. <span>A blog served hot, one cup at a time.</span></p>
+      </div>
+      <div id="contact">
+        <h2 class="ag-h2">Contact</h2>
+        <div class="ag-contact">
+          <a class="ag-link" href="https://github.com/alexgrais">GitHub</a>
+          <a class="ag-link" href="https://www.linkedin.com/in/alexandre-grais-07b74926">LinkedIn</a>
+          <a class="ag-link" href="https://x.com/_AlexGrs_">X</a>
+        </div>
+        <a class="ag-link ag-mono" href="mailto:hi@alexgrais.com">hi@alexgrais.com</a>
+      </div>
     </section>
 
-    <section class="rise" style="--d:5">
-      <h2><span class="mono">05</span> Elsewhere</h2>
-      <ul class="links">
-        <li><a href="https://github.com/alexgrais" class="mono">github/alexgrais</a></li>
-        <li><a href="mailto:hi@alexgrais.com" class="mono">hi@alexgrais.com</a></li>
-        <li><a href="https://www.linkedin.com/in/alexandre-grais-07b74926" class="mono">linkedin</a></li>
-        <li><a href="https://x.com/_AlexGrs_" class="mono">x/@_AlexGrs_</a></li>
-      </ul>
-    </section>
-
-    <footer class="rise" style="--d:6">
-      <p>Grais is pronounced like <em>grace</em>. Or <em>grey</em>, but grey is not my color. One swatch keeps the name honest.</p>
-      <p class="fine">Two static files, zero frameworks, no em dashes. &copy; 2026 Alexandre Grais</p>
+    <footer class="ag-footer rise" style="--d:5">
+      <span>Grais is pronounced like grace. Or grey, but grey is not my color.</span>
+      <span>Two static files, zero frameworks, no em dashes. &copy; 2026 Alexandre Grais</span>
     </footer>
   </main>
 </body>
